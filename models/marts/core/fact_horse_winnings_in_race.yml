@@ -14,3 +14,7 @@ models:
         description: Navn for hesten
       - name: prize
         description: Antall kroner vunnet
+        meta:
+          metrics:
+            total_prizes:
+              type: sum
