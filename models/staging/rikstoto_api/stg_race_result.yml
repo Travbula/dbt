@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_race_results
+    columns:
+      - name: raceday_key
+        description: Unik nøkkel for hvert løp
+        tests:
+          - unique
+          - not_null
+      - name: distance
+      - name: trackstate
+        tests:
+          - accepted_values:
+              values:
+                - Lett
+                - Noe tung
+                - Tung
+                - Hard
+      - name: startmethod
+        tests:
+          - accepted_values:
+              values:
+                - A
+                - V
+      - name: winningdistance
+      - name: last500meterstime
+      - name: first500meterstime
+      - name: first1000meterstime
+      - name: first500metershorsename
+      - name: first1000metershorsename

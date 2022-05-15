@@ -1,0 +1,119 @@
+version: 2
+
+sources:
+  - name: rikstoto
+    description: Data from Rikstoto API endpoints
+    database: airbyte_database
+    schema: airbyte_schema
+
+    tables:
+    - name: complete_results
+      description: Detailed race results data (source) metadata.
+      columns:
+        - name: raceday_key
+          description: Rikstoto ID for løpet
+          tests:
+            - unique
+            - not_null
+        - name: result
+          description: JSON containing the actual race results data.
+        - name: message
+          description: API request message
+        - name: success
+          description: API request success status
+        - name: errorcode
+          description: API request errorcode
+        - name: _airbyte_ab_id
+          description: Airbyte ab id..?
+        - name: _airbyte_emitted_at
+          description: ETL loaded at field
+        - name: _airbyte_normalized_at
+          description: Timestamp for normalisering?
+        - name: _airbyte_complete_results_hashid
+          description: Hash/ID av hele requesten som raden er del av
+
+    - name: complete_results_result
+      description: Race specific race results
+      columns:
+        - name: results
+          description: JSON med rader per hest (se complete_results_result_results)
+        - name: distance
+          description: Distanse for løp
+        - name: starttime
+          description: Starttidspunkt for løpet
+        - name: isComplete
+          description: Om løpet er avsluttet
+        - name: trackstate
+          description: Tilstand for baneunderlaget ved løpet
+        - name: startmethod
+          description: Startmetode for løp
+        - name: trackstatecode
+          description: Kode for startmetode
+        - name: winningdistance
+          description: Hvor mange lengder det ble vunnet med
+        - name: last500meterstime
+          description: Kilometertid (sekunder pr kilometer) for siste 500 meter
+        - name: first500meterstime
+          description: Kilometertid (sekunder pr kilometer) for første 500 meter
+        - name: first1000meterstime
+          description: Kilometertid (sekunder pr kilometer) for første 1000 meter
+        - name: first500metershorsename
+          description: Hest som ledet etter første 500 meter
+        - name: first1000metershorsename
+          description: Hest som ledet etter første 1000 meter
+        - name: _airbyte_ab_id
+          description: Airbyte row id?
+        - name: _airbyte_emitted_at
+          description: ETL loaded at field
+        - name: _airbyte_normalized_at
+          description: Timestamp for normalisering?
+        - name: _airbyte_complete_results_hashid
+          description: Hash/ID av hele requesten som raden er del av
+        - name: _airbyte_result_hashid
+          description: Hash/ID av denne raden
+          tests:
+            - unique
+            - not_null
+
+    - name: complete_results_result_results
+      description: Horse specific race results
+      columns:
+        - name: odds
+          description: Odds for hest (ganget med 10)
+        - name: order
+          description: Nummer i mål (0 betyr ikke avsluttet)
+        - name: place
+          description: Premieplassering (0 betyr ikke utbetalt premie)
+        - name: prize
+          description: Premiepenger (ganget med 100)
+        - name: kmtime
+          description: Hastighet. Antall sekunder pr kilometer 
+        - name: distance
+          description: Løpsdistanse for hesten
+        - name: driverid
+          description: Id for kusk (foreignkey)
+        - name: horsename
+          description: Hestens navn
+        - name: drivername
+          description: Kuskens navn
+        - name: startnumber
+          description: Startnummer
+        - name: postposition
+          description: Posisjon i sin startrekke?
+        - name: drivershortname
+          description: Forkortelse av kuskenavn
+        - name: horseregistrationnumber
+          description: Id for hest (foreignkey)
+        - name: _airbyte_ab_id
+          description: Airbyte row id?
+        - name: _airbyte_emitted_at
+          description: ETL loaded at field
+        - name: _airbyte_normalized_at
+          description: Timestamp for normalisering?
+        - name: _airbyte_complete_results_hashid
+          description: Hash/ID av hele requesten som raden er del av
+        - name: _airbyte_result_hashid
+          description: Hash/ID av denne raden
+          tests:
+            - unique
+            - not_null
