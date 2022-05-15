@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_horse_result_in_race
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - horseregistrationnumber
+            - raceday_key
+    columns:
+      - name: horseregistrationnumber
+        description: ID for hest
+      - name: horsename
+      - name: raceday_key
+        description: ID for løp
+      - name: startnumber
+      - name: postposition
+        description: Litt usikker hva denne betyr
+      - name: finishing_position
+        description: Hvilket nummer hesten var i mål (1 er først)
+      - name: place
+      - name: prize
+        description: Premiepenger vunnet
+      - name: distance
+        description: Hvor langt hesten løp
+      - name: kmtime
+        description: Antall sekunder pr kilometer
+      - name: driverid
+      - name: drivername
+      - name: drivershortname
+      - name: odds
