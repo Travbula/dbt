@@ -6,7 +6,7 @@ select
     horse.postposition,
     horse."order" AS finishing_position,
     horse.place,
-    horse.prize / 100 AS prize,
+    coalesce(horse.prize, 0) / 100 AS prize,
     horse.distance,
     horse.kmtime,
     horse.driverid,
