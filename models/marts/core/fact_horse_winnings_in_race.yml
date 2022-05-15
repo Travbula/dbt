@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fact_horse_winnings_in_race
+    columns:
+      - name: raceday_key
+        description: Unik nøkkel for hvert løp
+        tests:
+          - unique
+          - not_null
+      - name: horseregistrationnumber
+        description: ID for hesten
+      - name: horsename
+        description: Navn for hesten
+      - name: prize
+        description: Antall kroner vunnet
