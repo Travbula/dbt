@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fct_horse_in_race
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - race_id
+            - horse_id
+    columns:
+      - name: race_id
+        description: ID of race
+      - name: horse_id
+        description: ID of horse
+      - name: driver_id
+        description: ID of horse driver
+      - name: owner_name
+        description: Name of horse owner
+      - name: start_number
+        description: Start number horse had in race
+      - name: extra_distance
+        description: How much extra distance (for volt)
+      - name: shoes
+        description: Type of horse shoes
+      - name: sulky
+        description: Type of sulky
+      - name: finishing_position
+        description: The position the horse finished in
+      - name: prize
+        description: How much money won in race
+      - name: kmtime
+        description: Time pr km++ (todo split this)

@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: dim_breeder
+    description: Dimension for breeders
+    columns:
+      - name: breeder_name
+        description: ID of breeder

@@ -15,6 +15,8 @@ sources:
           tests:
             - unique
             - not_null
+        - name: date
+          description: Date of race
         - name: result
           description: JSON containing the actual race results data.
         - name: message
@@ -117,3 +119,117 @@ sources:
           tests:
             - unique
             - not_null
+
+    - name: rikstoto_program
+      description: Program for all races in a raceday.
+      columns:
+        - name: raceday_key
+          description: Rikstoto ID for løpet
+          tests:
+            - unique
+            - not_null
+        - name: date
+          description: Date of races
+
+    - name: rikstoto_program_result
+      description: One race in a raceday.
+      columns:
+        - name: distance
+          description: Distance of race
+        - name: ismonte
+          description: Whether it is a monte race
+        - name: propositions
+          description: What it is possible to bet on
+        - name: raceform
+          description: What race type it is
+        - name: racename
+          description: Name of the race
+        - name: racenumber
+          description: The (unique) number the race has in a raceday. Race 1 starts before race 2 and so on
+        - name: startmethod
+          description: Method used to start the race (auto, volte, ...)
+        - name: starts
+          description: The horses starting in the race?
+    
+    - name: rikstoto_program_result_starts
+      description: Info about a horse starting in a race
+      columns:
+        - name: age
+          description: Age of horse
+        - name: breeder
+          description: The horse's breeder
+        - name: color
+          description: Color of the horse?
+        - name: driver
+          description: The driver of the horse in the race
+        - name: driverid
+          description: Id of the horse's driver
+        - name: extradistance
+          description: The extra distance the horse has in the race (often used in volte races)
+        - name: father
+          description: The horse's father
+        - name: galloppercentage
+          description: Percentage of races the horses has gallopped
+        - name: grandfather
+          description: The horse's grandfather
+        - name: horseannualstatistics
+          description: Some placement statistics
+        - name: horsename
+          description: The horse's name
+        - name: horseregistrationnumber
+          description: ID of the horse
+        - name: mother
+          description: The horse's mother
+        - name: owner
+          description: The horse's owner
+        - name: postposition
+          description: ???
+        - name: previewcomment
+          description: Comment made by expert before the race?
+        - name: previousstartshoes
+          description: Shoes the horse started with in its previous race?
+        - name: previousstartsulky
+          description: The type of sulky the horse ran with in its previous race?
+        - name: recordauto
+          description: The horse's record speed for auto start?
+        - name: recordvolt
+          description: The horse's record speed for volte start?
+        - name: sex
+          description: The horse's sex
+        - name: shoes
+          description: The shoes the horse is using in the race
+        - name: startimage
+          description: Nice image of the horse
+        - name: startnumber
+          description: The horse's startnumber in the race
+        - name: sulky
+          description: The sulky the horse is using in the race
+        - name: totalearnings
+          description: The horse's lifetime earnings
+        - name: trainer
+          description: The horse's trainer
+        - name: triplepercentage
+          description: The percentage of times the horse has finished top three in all previous races
+        - name: winpercentage
+          description: The percentage of times the horse has finished first in all previous races
+
+    - name: rikstoto_program_result_starts_horseannualstatistics
+      description: Annualized statistics
+
+    - name: rikstoto_program_result_starts_horseannualstatistics_total
+      description: Statistics from all races in the horse's career
+      columns:
+        - name: numberoffirstplaces
+          description: Number of times horse has finished first
+        - name: numberofsecondsplaces
+          description: Number of times horse has finished second
+        - name: numberofstarts
+          description: Number of times horse has raced
+        - name: numberofthirdplaces
+          description: Number of times horse has finished third
+        - name: record
+          description: ?? 
+        - name: totalearnings
+          description: Earnings for full carreer
+        - name: year
+          description: ??

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_driver
+    description: Dimension for drivers
+    columns:
+      - name: driver_id
+        description: ID of driver
+        tests:
+          - unique
+          - not_null
+      - name: driver_name
+        description: Name of driver

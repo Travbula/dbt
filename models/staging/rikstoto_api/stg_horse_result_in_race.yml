@@ -5,16 +5,19 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - horseregistrationnumber
-            - raceday_key
+            - race_id
+            - horse_id
     columns:
-      - name: horseregistrationnumber
-        description: ID for hest
-      - name: horsename
-      - name: raceday_key
-        description: ID for løp
-      - name: startnumber
-      - name: postposition
+      - name: race_id
+        description: ID of race
+      - name: horse_id
+        description: ID of horse
+      - name: horse_name
+        description: Name of the horse
+      - name: date
+        description: Date of race
+      - name: start_number
+      - name: post_position
         description: Litt usikker hva denne betyr
       - name: finishing_position
         description: Hvilket nummer hesten var i mål (1 er først)
@@ -25,7 +28,7 @@ models:
         description: Hvor langt hesten løp
       - name: kmtime
         description: Antall sekunder pr kilometer
-      - name: driverid
-      - name: drivername
-      - name: drivershortname
+      - name: driver_id
+      - name: driver_name
+      - name: driver_short_name
       - name: odds

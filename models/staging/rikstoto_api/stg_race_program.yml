@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_race_program
+    description: Program for a race
+    
+    columns:
+        - name: race_id
+          description: Rikstoto ID for løpet
+          tests:
+            - unique
+            - not_null
+        - name: racetrack_id
+          description: ID of racetrack
+        - name: date
+          description: Date of races 
+        - name: distance
+          description: Distance of race
+        - name: is_monte
+          description: Whether it is a monte race
+        - name: propositions
+          description: What it is possible to bet on
+        - name: race_form
+          description: What race type it is
+        - name: race_name
+          description: Name of the race
+        - name: race_number
+          description: The (unique) number the race has in a raceday. Race 1 starts before race 2 and so on
+        - name: start_method
+          description: Method used to start the race (auto, volte, ...)

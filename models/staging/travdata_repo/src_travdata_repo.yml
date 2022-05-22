@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: travdata_repo
+    description: Data from the travdata repo (https://github.com/Travbula/travdata)
+    database: airbyte_database
+    schema: airbyte_schema
+
+    tables:
+    - name: racetracks
+      description: Information about racetracks
+      columns:
+        - name: racetrack_id
+          description: ID of tracetrack
+          tests:
+            - unique
+            - not_null
+        - name: distance
+          description: The length of the racetrack in meters
+        - name: municipality
+          description: Municipality where the racetrack is located
+        - name: name
+          description: Name of the racetrack
+        - name: open_stretch
+          description: Whether or not the racetrack has an open stretch lane (siste indre)
+        - name: opening_year
+          description: The year the racetrack was opened
