@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: previos_race_matching
+    description: Matching of a time a horse is in a program with the last time the horse was in the program
+    columns:
+      - name: first_race
+        description: The race that came before
+      - name: second_race
+        description: The race that was after the first_race
+      - name: horse_id
+        description: The horse that raced in both races
+

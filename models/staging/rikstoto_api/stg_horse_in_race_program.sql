@@ -58,7 +58,7 @@ final as (
 )
 
 select * from final
-where race_id = 'MO_NR_2021-12-01_6'
+--where race_id = 'MO_NR_2021-12-01_6'
 
 --{% if target.name == 'dev' %}
 --where created_at >= dateadd('day', -3, current_date)

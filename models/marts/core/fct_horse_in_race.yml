@@ -30,3 +30,13 @@ models:
         description: How much money won in race
       - name: kmtime
         description: Time pr km++ (todo split this)
+      - name: trainer_name
+        description: The person who trains the horse at the time of the race
+      - name: first_place
+        description: True if the horse won the race
+      - name: second_place
+        description: True if the horse finished second in the race
+      - name: third_place
+        description: True if the horse finished third in the race
+      - name: win_odds
+        description: The final rikstoto win betting odds for the horse in the race

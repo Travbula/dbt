@@ -30,7 +30,7 @@ models:
           description: The horse's father
         - name: gallop_percentage
           description: Percentage of races the horses has gallopped
-        - name: grandfather
+        - name: grandfather_name
           description: The horse's grandfather
         - name: horse_annual_statistics
           description: Some placement statistics
