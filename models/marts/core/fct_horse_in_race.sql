@@ -23,7 +23,11 @@ final as (
         program_horse.sulky,
         result_horse.finishing_position,
         result_horse.prize,
-        result_horse.kmtime
+        result_horse.kmtime,
+        result_horse.odds as win_odds,
+        case when result_horse.finishing_position = 1 then true else false end as first_place,
+        case when result_horse.finishing_position = 2 then true else false end as second_place,
+        case when result_horse.finishing_position = 3 then true else false end as third_place
         
     from program_horse
     left join program on program_horse.race_id = program.race_id

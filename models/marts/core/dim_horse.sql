@@ -2,9 +2,9 @@ with horse_in_program as (
     select * from {{ ref('stg_horse_in_race_program') }}
 ),
 
-final as (
+horse_dim_rows as (
     select
-        distinct(horse_id),
+        horse_id,
         horse_name,
         sex,
         color,
@@ -14,6 +14,18 @@ final as (
         breeder_name
 
     from horse_in_program
+),
+
+final as (
+    -- todo: look into better order by here
+    {{ 
+        dbt_utils.deduplicate(
+            relation='horse_dim_rows',
+            partition_by='horse_id',
+            order_by='horse_id asc',
+        )
+    }}
+
 )
 
 select * from final

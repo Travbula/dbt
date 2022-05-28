@@ -8,7 +8,8 @@ horses_in_race_count as (
         count(1) as number_of_horses_to_start
     
     from {{ ref('stg_horse_result_in_race') }}
-   -- where kmtime is not null
+    where odds <> 0 -- er dette riktig? antar nå at hvis odds er 0 så starter ikke hesten i løpet
+    --where kmtime is not null
     group by 1
 ),
 

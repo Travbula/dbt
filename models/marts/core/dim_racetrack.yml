@@ -10,6 +10,12 @@ models:
           - unique
           - not_null
       - name: distance
+        description: How long the racetrack is in meters
       - name: open_stretch
+        description: Racetracks with an open stretch has a lane inside of the first lane on the "oppløp"
       - name: name
+        description: Name of the racetrack
       - name: opening_year
+        description: The year the racetrack was opened
+      - name: Municipality
+        description: The municipality the racetrack is located in
