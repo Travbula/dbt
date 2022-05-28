@@ -3,8 +3,8 @@ version: 2
 sources:
   - name: rikstoto
     description: Data from Rikstoto API endpoints
-    database: airbyte_database
-    schema: airbyte_schema
+    database: travbula
+    schema: rikstoto
 
     tables:
     - name: complete_results

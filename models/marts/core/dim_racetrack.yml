@@ -3,6 +3,10 @@ version: 2
 models:
   - name: dim_racetrack
     description: Dimension for racetracks
+    meta:
+      joins:
+        - join: fct_horse_in_race
+          sql_on: ${dim_racetrack.racetrack_id} = ${fct_horse_in_race.racetrack_id}
     columns:
       - name: racetrack_id
         description: ID of racetrack
@@ -17,5 +21,5 @@ models:
         description: Name of the racetrack
       - name: opening_year
         description: The year the racetrack was opened
-      - name: Municipality
+      - name: municipality
         description: The municipality the racetrack is located in

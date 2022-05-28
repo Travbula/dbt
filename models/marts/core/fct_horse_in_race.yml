@@ -14,6 +14,8 @@ models:
         description: ID of horse
       - name: driver_id
         description: ID of horse driver
+      - name: racetrack_id
+        description: ID of racetrack where the horse raced
       - name: owner_name
         description: Name of horse owner
       - name: start_number
@@ -33,10 +35,26 @@ models:
       - name: trainer_name
         description: The person who trains the horse at the time of the race
       - name: first_place
-        description: True if the horse won the race
+        description: 1 if the horse won the race
       - name: second_place
-        description: True if the horse finished second in the race
+        description: 1 if the horse finished second in the race
       - name: third_place
-        description: True if the horse finished third in the race
+        description: 1 if the horse finished third in the race
       - name: win_odds
         description: The final rikstoto win betting odds for the horse in the race
+      - name: horses_beaten
+        description: Number of horses beaten in the race
+      - name: result_score
+        description: A scoring based on finishing position and number of horses in the race
+      - name: galloped
+        description: Did th ehorse gallop during the race?
+      - name: paced
+        description: Did the horse pace during the race?
+      - name: broke_race
+        description: Did the horse break the race?
+      - name: timed
+        description: Was the horse timed?
+      - name: distanced
+        description: Was the horse distanced?
+      - name: disqualified
+        description: Was the horse disqualified?

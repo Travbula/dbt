@@ -1,5 +1,7 @@
 select
-    request.raceday_key as raceday_id,
+    --request.raceday_key as raceday_id,
+    {{ dbt_utils.split_part(string_text='request.raceday_key', delimiter_text="'/'", part_number=1) }} || '_' || 
+        {{ dbt_utils.split_part(string_text='request.raceday_key', delimiter_text="'/'", part_number=2) }} as race_id,
     resultat.distance,
     resultat.trackstate as track_state,
     resultat.startmethod as start_method,

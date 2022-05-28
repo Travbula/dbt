@@ -3,6 +3,10 @@ version: 2
 models:
   - name: dim_owner
     description: Dimension for horse owners
+    meta:
+      joins:
+        - join: fct_horse_in_race
+          sql_on: ${dim_owner.owner_name} = ${fct_horse_in_race.owner_name}
     columns:
       - name: owner_name
         description: Name of owner

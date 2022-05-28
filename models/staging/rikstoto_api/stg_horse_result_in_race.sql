@@ -47,15 +47,22 @@ final as (
         horse.horsename as horse_name,
         horse.startnumber as start_number,
         horse.postposition as post_position,
-        horse."order" as finishing_position,
+        horse.order as finishing_position,
         horse.place,
         coalesce(horse.prize, 0) / 100 AS prize,
         horse.distance,
-        horse.kmtime,
         horse.driverid as driver_id,
         horse.drivername as driver_name,
         horse.drivershortname as driver_short_name,
-        horse.odds / 10 AS odds
+        horse.odds / 10 AS odds,
+        --horse.kmtime,
+        regexp_extract(horse.kmtime, '[0-9]+,[0-9]+') as kmtime,
+        case when regexp_contains(horse.kmtime, 'g') then 1 else null end as galloped,
+        case when regexp_contains(horse.kmtime, 'p') then 1 else null end as paced,
+        case when regexp_contains(horse.kmtime, 'br') then 1 else null end as broke_race,
+        case when regexp_contains(horse.kmtime, '(nc|temp)') then 1 else null end as timed,
+        case when regexp_contains(horse.kmtime, 'dist') then 1 else null end as distanced,
+        case when length(horse.kmtime) = 2 and regexp_contains(horse.kmtime, 'd') then 1 else null end as disqualified
 
     from horse
     left join full_race ON horse._airbyte_result_hashid = full_race._airbyte_result_hashid

@@ -3,6 +3,10 @@ version: 2
 models:
   - name: dim_race
     description: Dimension for races
+    meta:
+      joins:
+        - join: fct_horse_in_race
+          sql_on: ${dim_race.race_id} = ${fct_horse_in_race.race_id}
     columns:
       - name: race_id
         description: ID of race
@@ -21,5 +25,5 @@ models:
         description: Form of the race
       - name: start_method
         description: Start method of the race
-      - name: propositions
-        description: Lots of info about the race. Todo split this up somehow
+      - name: total_prize_pool
+        description: Total amount of prize money in the race

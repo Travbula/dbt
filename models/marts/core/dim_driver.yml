@@ -3,6 +3,10 @@ version: 2
 models:
   - name: dim_driver
     description: Dimension for drivers
+    meta:
+      joins:
+        - join: fct_horse_in_race
+          sql_on: ${dim_driver.driver_id} = ${fct_horse_in_race.driver_id}
     columns:
       - name: driver_id
         description: ID of driver

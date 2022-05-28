@@ -3,8 +3,8 @@ version: 2
 sources:
   - name: travdata_repo
     description: Data from the travdata repo (https://github.com/Travbula/travdata)
-    database: airbyte_database
-    schema: airbyte_schema
+    database: travbula
+    schema: rikstoto
 
     tables:
     - name: racetracks

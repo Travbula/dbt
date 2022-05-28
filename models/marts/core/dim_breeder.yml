@@ -3,6 +3,11 @@ version: 2
 models:
   - name: dim_breeder
     description: Dimension for breeders
+    meta:
+      joins:
+        - join: fct_horse_in_race
+          sql_on: ${dim_breeder.breeder_name} = ${fct_horse_in_race.breeder_name}
     columns:
       - name: breeder_name
         description: ID of breeder
+    
