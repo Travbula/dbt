@@ -40,6 +40,7 @@ final as (
         result_horse.driver_id,
         program_horse.owner_name,
         program_horse.trainer_name,
+        program_horse.breeder_name,
         result_horse.start_number,
         program_horse.extra_distance,
         program_horse.shoes,

@@ -18,6 +18,8 @@ models:
         description: ID of racetrack where the horse raced
       - name: owner_name
         description: Name of horse owner
+      - name: breeder_name
+        description: Name of breeder of the horse
       - name: start_number
         description: Start number horse had in race
       - name: extra_distance
