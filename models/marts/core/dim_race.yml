@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_race
+    description: Dimension for races
+    columns:
+      - name: race_id
+        description: ID of race
+        tests:
+          - unique
+          - not_null
+      - name: racetrack_id
+        description: ID of racetrack where race happened
+      - name: race_name
+        description: Name of the race
+      - name: date
+        description: Date the race happened
+      - name: distance
+        description: Distance of the race
+      - name: race_form
+        description: Form of the race
+      - name: start_method
+        description: Start method of the race
+      - name: propositions
+        description: Lots of info about the race. Todo split this up somehow

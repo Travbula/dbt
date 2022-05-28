@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: dim_owner
+    description: Dimension for horse owners
+    columns:
+      - name: owner_name
+        description: Name of owner

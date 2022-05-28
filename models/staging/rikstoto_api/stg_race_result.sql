@@ -1,14 +1,14 @@
 select
-    request.raceday_key,
+    request.raceday_key as raceday_id,
     resultat.distance,
-    resultat.trackstate,
-    resultat.startmethod,
-    resultat.winningdistance,
-    resultat.last500meterstime,
-    resultat.first500meterstime,
-    resultat.first1000meterstime,
-    resultat.first500metershorsename,
-    resultat.first1000metershorsename
+    resultat.trackstate as track_state,
+    resultat.startmethod as start_method,
+    resultat.winningdistance as winning_distance,
+    resultat.last500meterstime as last_500_meters_time,
+    resultat.first500meterstime as first_500_meters_time,
+    resultat.first1000meterstime as first_1000_meters_time,
+    resultat.first500metershorsename as first_500_meters_horse_name,
+    resultat.first1000metershorsename as first_1000_meters_horse_name
 
 from {{ source('rikstoto', 'complete_results_result') }} resultat
 

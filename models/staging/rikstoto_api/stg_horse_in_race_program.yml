@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: stg_horse_in_race_program
+    description: Info about horses in race programs
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - race_id
+            - horse_id
+
+    columns:
+        - name: race_id
+          description: ID of race
+        - name: horse_id
+          description: ID of horse
+        - name: age
+          description: Age of horse
+        - name: breeder_name
+          description: The horse's breeder
+        - name: color
+          description: Color of the horse?
+        - name: driver_name
+          description: The driver of the horse in the race
+        - name: driver_id
+          description: Id of the horse's driver
+        - name: extra_distance
+          description: The extra distance the horse has in the race (often used in volte races)
+        - name: father_name
+          description: The horse's father
+        - name: gallop_percentage
+          description: Percentage of races the horses has gallopped
+        - name: grandfather
+          description: The horse's grandfather
+        - name: horse_annual_statistics
+          description: Some placement statistics
+        - name: horse_name
+          description: The horse's name
+        - name: horse_id
+          description: ID of the horse
+        - name: mother_name
+          description: The horse's mother
+        - name: owner_name
+          description: The horse's owner
+        - name: post_position
+          description: ???
+        - name: preview_comment
+          description: Comment made by expert before the race?
+        - name: previous_start_shoes
+          description: Shoes the horse started with in its previous race?
+        - name: previous_start_sulky
+          description: The type of sulky the horse ran with in its previous race?
+        - name: record_auto
+          description: The horse's record speed for auto start?
+        - name: record_volt
+          description: The horse's record speed for volte start?
+        - name: sex
+          description: The horse's sex
+        - name: shoes
+          description: The shoes the horse is using in the race
+        - name: start_image
+          description: Nice image of the horse
+        - name: start_number
+          description: The horse's startnumber in the race
+        - name: sulky
+          description: The sulky the horse is using in the race
+        - name: total_earnings
+          description: The horse's lifetime earnings
+        - name: trainer_name
+          description: The horse's trainer
+        - name: triple_percentage
+          description: The percentage of times the horse has finished top three in all previous races
+        - name: win_percentage
+          description: The percentage of times the horse has finished first in all previous races

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: dim_racetrack
+    description: Dimension for racetracks
+    columns:
+      - name: racetrack_id
+        description: ID of racetrack
+        tests:
+          - unique
+          - not_null
+      - name: distance
+      - name: open_stretch
+      - name: name
+      - name: opening_year

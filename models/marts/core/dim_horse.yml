@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_horse
+    description: Dimension for horses
+    columns:
+      - name: horse_id
+        description: ID of horse
+        tests:
+          - unique
+          - not_null
+      - name: horse_name
+        description: Name of horse
+      - name: sex
+        description: Sex of horse
+      - name: color
+        description: Color of horse
+      - name: father_name
+        description: Name of father of the horse
+      - name: mother_name
+        description: Name of mother of the horse
+      - name: grandfather_name
+        description: Name of grandfather of the horse
+      - name: breeder_name
+        description: Name of breeder of the horse
