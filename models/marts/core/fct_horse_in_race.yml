@@ -7,20 +7,20 @@ models:
           combination_of_columns:
             - race_id
             - horse_id
-    meta:
-      joins:
-        - join: dim_breeder
-          sql_on: ${dim_breeder.breeder_name} = ${fct_horse_in_race.breeder_name}
-        - join: dim_driver
-          sql_on: ${dim_driver.driver_id} = ${fct_horse_in_race.driver_id}
-        - join: dim_horse
-          sql_on: ${dim_horse.horse_id} = ${fct_horse_in_race.horse_id}
-        - join: dim_owner
-          sql_on: ${dim_owner.owner_name} = ${fct_horse_in_race.owner_name}
-        - join: dim_race
-          sql_on: ${dim_race.race_id} = ${fct_horse_in_race.race_id}
-        - join: dim_racetrack
-          sql_on: ${dim_racetrack.racetrack_id} = ${fct_horse_in_race.racetrack_id}
+    #meta:
+    #  joins:
+    #    - join: dim_breeder
+    #      sql_on: ${dim_breeder.breeder_name} = ${fct_horse_in_race.breeder_name}
+    #    - join: dim_driver
+    #      sql_on: ${dim_driver.driver_id} = ${fct_horse_in_race.driver_id}
+    #    - join: dim_horse
+    #      sql_on: ${dim_horse.horse_id} = ${fct_horse_in_race.horse_id}
+    #    - join: dim_owner
+    #      sql_on: ${dim_owner.owner_name} = ${fct_horse_in_race.owner_name}
+    #    - join: dim_race
+    #      sql_on: ${dim_race.race_id} = ${fct_horse_in_race.race_id}
+    #    - join: dim_racetrack
+    #      sql_on: ${dim_racetrack.racetrack_id} = ${fct_horse_in_race.racetrack_id}
     columns:
       - name: race_id
         description: ID of race
