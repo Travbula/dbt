@@ -6,73 +6,49 @@ program as (
     select * from {{ ref('stg_race_program') }}
 ),
 
-result_horse as (
-    select * from {{ ref('stg_horse_result_in_race' )}}
-),
-
-race as (
-    select * from {{ ref('race') }}
-),
-
-race_result as (
-    select * from {{ ref('stg_race_result') }}
-),
-
-result_value as (
-    select
-        race.race_id,
-        result_horse.horse_id,
-        case when result_horse.finishing_position = 0 then 0 else (race.number_of_horses_to_start - result_horse.finishing_position) end as horses_beaten,
-        case
-            when result_horse.finishing_position = 0 then 0
-            else 1 - (result_horse.finishing_position - 1)/race.number_of_horses_to_start
-        end as result_score
-
-    from result_horse
-    left join race on result_horse.race_id = race.race_id
+horse_result as (
+    select * from {{ ref('horse_result') }}
 ),
 
 final as (
     select
-        result_horse.race_id,
+        horse_result.race_id,
         program.racetrack_id,
-        result_horse.horse_id,
-        result_horse.driver_id,
+        horse_result.horse_id,
+        horse_result.driver_id,
         program_horse.owner_name,
         program_horse.trainer_name,
         program_horse.breeder_name,
-        result_horse.start_number,
+        horse_result.start_number,
         program_horse.extra_distance,
         program_horse.shoes,
         program_horse.sulky,
-        result_horse.finishing_position,
-        result_horse.prize,
-        result_horse.kmtime,
-        result_horse.odds as win_odds,
-        result_value.horses_beaten,
-        result_value.result_score,
-        result_horse.galloped,
-        result_horse.paced,
-        result_horse.timed,
-        result_horse.distanced,
-        result_horse.broke_race,
-        result_horse.disqualified,
-        case when result_horse.finishing_position = 1 then 1 else 0 end as first_place,
-        case when result_horse.finishing_position = 2 then 1 else 0 end as second_place,
-        case when result_horse.finishing_position = 3 then 1 else 0 end as third_place,
-        case when result_horse.finishing_position = 1 then race_result.winning_distance else null end as winning_distance,
-        case when result_horse.finishing_position = 1 then race_result.last_500_meters_time else null end as last_500m_time,
-        case when race_result.first_500_meters_horse_name = program_horse.start_number || ' ' || result_horse.horse_name then 1 else null end as lead_after_500m,
-        case when race_result.first_500_meters_horse_name = program_horse.start_number || ' ' || result_horse.horse_name then race_result.first_500_meters_time else null end as lead_after_500m_time,
-        case when race_result.first_1000_meters_horse_name = program_horse.start_number || ' ' || result_horse.horse_name then 1 else null end as lead_after_1000m,
-        case when race_result.first_1000_meters_horse_name = program_horse.start_number || ' ' || result_horse.horse_name then race_result.first_1000_meters_time else null end as lead_after_1000m_time
+        horse_result.finishing_position,
+        horse_result.prize,
+        horse_result.kmtime,
+        horse_result.win_odds,
+        horse_result.horses_beaten,
+        horse_result.result_score,
+        horse_result.galloped,
+        horse_result.paced,
+        horse_result.timed,
+        horse_result.distanced,
+        horse_result.broke_race,
+        horse_result.disqualified,
+        horse_result.first_place,
+        horse_result.second_place,
+        horse_result.third_place,
+        horse_result.winning_distance,
+        horse_result.last_500m_time,
+        horse_result.lead_after_500m,
+        horse_result.lead_after_500m_time,
+        horse_result.lead_after_1000m,
+        horse_result.lead_after_1000m_time
         
 
-    from program_horse
-    inner join result_horse on program_horse.race_id = result_horse.race_id and program_horse.horse_id = result_horse.horse_id
+    from horse_result
+    left join program_horse on program_horse.race_id = horse_result.race_id and program_horse.horse_id = horse_result.horse_id
     left join program on program_horse.race_id = program.race_id
-    left join result_value on program_horse.race_id = result_value.race_id and program_horse.horse_id = result_value.horse_id
-    left join race_result on program_horse.race_id = race_result.race_id
 )
 
 select * from final

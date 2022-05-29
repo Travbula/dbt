@@ -31,4 +31,4 @@ models:
       - name: driver_id
       - name: driver_name
       - name: driver_short_name
-      - name: odds
+      - name: win_odds
