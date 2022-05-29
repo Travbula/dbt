@@ -25,6 +25,10 @@ models:
 
     columns:
       - name: race_id
+        meta:
+          metrics:
+            race_count:
+              type: count_distinct
         description: ID of race
       - name: horse_id
         description: ID of horse
@@ -52,12 +56,20 @@ models:
               type: average
       - name: prize
         description: How much money won in race
+        meta:
+          metrics:
+            avg_prize:
+              type: average
       - name: kmtime
-        description: Time pr km++ (todo split this)
+        description: Time pr km
       - name: trainer_name
         description: The person who trains the horse at the time of the race
       - name: first_place
         description: 1 if the horse won the race
+        meta:
+          metrics:
+            avg_first_place:
+              type: average
       - name: second_place
         description: 1 if the horse finished second in the race
       - name: third_place
@@ -66,10 +78,22 @@ models:
         description: The final rikstoto win betting odds for the horse in the race
       - name: horses_beaten
         description: Number of horses beaten in the race
+        meta:
+          metrics:
+            avg_horses_beaten:
+              type: average
       - name: result_score
         description: A scoring based on finishing position and number of horses in the race
+        meta:
+          metrics:
+            avg_result_score:
+              type: average
       - name: galloped
         description: Did th ehorse gallop during the race?
+        meta:
+          metrics:
+            gallop_percentage:
+              type: average
       - name: paced
         description: Did the horse pace during the race?
       - name: broke_race
