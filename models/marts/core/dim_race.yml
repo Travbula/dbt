@@ -29,7 +29,7 @@ models:
         description: The number of horses who started in the race
         meta:
           metrics:
-            - metric: avg_number_of_horses_to_start
-              type: average
+            avg_number_of_horses_to_start:
+                type: average
       - name: total_prize_pool
         description: Total amount of prize money in the race

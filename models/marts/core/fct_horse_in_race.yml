@@ -65,13 +65,19 @@ models:
       - name: trainer_name
         description: The person who trains the horse at the time of the race
       - name: bet_winnings
-        description: How much won by betting on the horse to win
+        description: How much won by betting on the horse to win (and how much lost when the horse did not win)
         meta:
           metrics:
             avg_bet_winnings:
               type: average
             sum_bet_winnings:
               type: sum
+      - name: winnings
+        description: How much won by betting on the horse to win
+        meta:
+          metrics:
+            avg_winnings:
+              type: average
       - name: first_place
         description: 1 if the horse won the race
         meta:
