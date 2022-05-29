@@ -42,6 +42,7 @@ final as (
         result_horse.distanced,
         result_horse.broke_race,
         result_horse.disqualified,
+        case when result_horse.finishing_position = 1 then result_horse.win_odds else 0 end as bet_winnings,
         case when result_horse.finishing_position = 1 then 1 else 0 end as first_place,
         case when result_horse.finishing_position = 2 then 1 else 0 end as second_place,
         case when result_horse.finishing_position = 3 then 1 else 0 end as third_place,

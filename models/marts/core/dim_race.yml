@@ -25,5 +25,11 @@ models:
         description: Form of the race
       - name: start_method
         description: Start method of the race
+      - name: number_of_horses_to_start
+        description: The number of horses who started in the race
+        meta:
+          metrics:
+            - metric: avg_number_of_horses_to_start
+              type: average
       - name: total_prize_pool
         description: Total amount of prize money in the race

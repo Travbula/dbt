@@ -35,6 +35,7 @@ final as (
         horse_result.distanced,
         horse_result.broke_race,
         horse_result.disqualified,
+        horse_result.bet_winnings,
         horse_result.first_place,
         horse_result.second_place,
         horse_result.third_place,
