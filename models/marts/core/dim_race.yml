@@ -33,3 +33,5 @@ models:
                 type: average
       - name: total_prize_pool
         description: Total amount of prize money in the race
+      - name: track_state
+        description: State of the track at race time

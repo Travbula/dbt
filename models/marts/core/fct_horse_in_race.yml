@@ -78,6 +78,12 @@ models:
           metrics:
             avg_winnings:
               type: average
+      - name: winner_odds
+        description: Odds of the horse if it won, null otherwise
+        meta:
+          metrics:
+            avg_winner_odds:
+              type: average
       - name: first_place
         description: 1 if the horse won the race
         meta:
