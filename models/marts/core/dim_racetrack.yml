@@ -23,3 +23,9 @@ models:
         description: The year the racetrack was opened
       - name: municipality
         description: The municipality the racetrack is located in
+      - name: finish_distance
+        description: How many meters in the finish of the race (oppløpslengde)
+      - name: turn_radius
+        description: The radius of the turns
+      - name: dosage
+        description: The dosage of the turns

@@ -7,6 +7,9 @@ final as (
         racetrack_id,
         name,
         distance,
+        finish_distance,
+        swing_radius as turn_radius,
+        dosage,
         open_stretch,
         municipality,
         opening_year

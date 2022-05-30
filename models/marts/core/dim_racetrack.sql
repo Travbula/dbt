@@ -12,10 +12,13 @@ final as (
     racetrack.open_stretch,
     racetrack.name,
     racetrack.opening_year,
-    racetrack.municipality
+    racetrack.municipality,
+    racetrack.finish_distance,
+    racetrack.turn_radius,
+    racetrack.dosage
     
     from race_program
     left join racetrack on race_program.racetrack_id = racetrack.racetrack_id
 )
 
-select * from final
+select * from racetrack
