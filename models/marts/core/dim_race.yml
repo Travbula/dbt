@@ -35,3 +35,5 @@ models:
         description: Total amount of prize money in the race
       - name: track_state
         description: State of the track at race time
+      - name: distance_segment
+        description: Segmenting based on distances (sprint, regular, etc)
