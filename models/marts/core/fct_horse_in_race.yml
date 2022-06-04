@@ -144,7 +144,7 @@ models:
             fastest_first_500m:
               type: min
             average_first_500m:
-              type: avg
+              type: average
             slowest_first_500m:
               type: max
       - name: lead_after_1000m
@@ -156,7 +156,7 @@ models:
             fastest_first_1000m:
               type: min
             average_first_1000m:
-              type: avg
+              type: average
             slowest_first_1000m:
               type: max
       - name: lead_from_500m_and_win
