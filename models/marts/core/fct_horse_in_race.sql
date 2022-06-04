@@ -10,6 +10,10 @@ horse_result as (
     select * from {{ ref('horse_result') }}
 ),
 
+post_position as (
+    select * from {{ ref('post_position') }}
+),
+
 final as (
     select
         horse_result.race_id,
@@ -20,6 +24,7 @@ final as (
         program_horse.trainer_name,
         program_horse.breeder_name,
         horse_result.start_number,
+        post_position.post_position,
         program_horse.extra_distance,
         program_horse.shoes,
         program_horse.sulky,
@@ -46,12 +51,15 @@ final as (
         horse_result.lead_after_500m,
         horse_result.lead_after_500m_time,
         horse_result.lead_after_1000m,
-        horse_result.lead_after_1000m_time
+        horse_result.lead_after_1000m_time,
+        horse_result.lead_from_500m_and_win,
+        horse_result.lead_from_1000m_and_win
         
 
     from horse_result
     left join program_horse on program_horse.race_id = horse_result.race_id and program_horse.horse_id = horse_result.horse_id
     left join program on program_horse.race_id = program.race_id
+    left join post_position on program_horse.race_id = post_position.race_id and program_horse.horse_id = post_position.horse_id and program_horse.start_number = post_position.start_number
 )
 
 select * from final

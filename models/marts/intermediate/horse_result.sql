@@ -24,6 +24,15 @@ result_value as (
     left join race_stats on result_horse.race_id = race_stats.race_id
 ),
 
+/*winner_info as (
+    select
+
+
+    from result_horse
+    left join race_result on result_horse.race_id = race_result.race_id
+    where result_horse.finishing_position = 1
+)*/
+
 final as (
     select
         result_horse.race_id,
@@ -50,10 +59,20 @@ final as (
         case when result_horse.finishing_position = 3 then 1 else 0 end as third_place,
         case when result_horse.finishing_position = 1 then race_result.winning_distance else null end as winning_distance,
         case when result_horse.finishing_position = 1 then race_result.last_500_meters_time else null end as last_500m_time,
-        case when race_result.first_500_meters_horse_name = result_horse.start_number || ' ' || result_horse.horse_name then 1 else null end as lead_after_500m,
-        case when race_result.first_500_meters_horse_name = result_horse.start_number || ' ' || result_horse.horse_name then race_result.first_500_meters_time else null end as lead_after_500m_time,
-        case when race_result.first_1000_meters_horse_name = result_horse.start_number || ' ' || result_horse.horse_name then 1 else null end as lead_after_1000m,
-        case when race_result.first_1000_meters_horse_name = result_horse.start_number || ' ' || result_horse.horse_name then race_result.first_1000_meters_time else null end as lead_after_1000m_time
+        case when race_result.leader_500m = result_horse.horse_name then 1 when race_result.leader_500m is null then null else 0 end as lead_after_500m,
+        case when race_result.leader_500m = result_horse.horse_name then race_result.first_500_meters_time else null end as lead_after_500m_time,
+        case when race_result.leader_1000m = result_horse.horse_name then 1 when race_result.leader_1000m is null then null else 0 end as lead_after_1000m,
+        case when race_result.leader_1000m = result_horse.horse_name then race_result.first_1000_meters_time else null end as lead_after_1000m_time,
+        case 
+            when result_horse.finishing_position = 1 and race_result.leader_500m = result_horse.horse_name then 1
+            when race_result.leader_500m is null then null
+            else 0
+        end as lead_from_500m_and_win,
+        case 
+            when result_horse.finishing_position = 1 and race_result.leader_1000m = result_horse.horse_name then 1
+            when race_result.leader_1000m is null then null
+            else 0
+        end as lead_from_1000m_and_win
 
     from race_result
     left join result_horse on race_result.race_id = result_horse.race_id

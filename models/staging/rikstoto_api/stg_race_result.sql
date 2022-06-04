@@ -9,8 +9,8 @@ select
     resultat.last500meterstime as last_500_meters_time,
     resultat.first500meterstime as first_500_meters_time,
     resultat.first1000meterstime as first_1000_meters_time,
-    resultat.first500metershorsename as first_500_meters_horse_name,
-    resultat.first1000metershorsename as first_1000_meters_horse_name
+    regexp_extract(resultat.first500metershorsename, r'\d+ (.*)') as leader_500m,
+    regexp_extract(resultat.first1000metershorsename, r'\d+ (.*)') as leader_1000m
 
 from {{ source('rikstoto', 'complete_results_result') }} resultat
 

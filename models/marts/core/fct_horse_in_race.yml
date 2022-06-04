@@ -42,6 +42,8 @@ models:
         description: Name of breeder of the horse
       - name: start_number
         description: Start number horse had in race
+      - name: post_position
+        description: Where the horse started the race (taking into accounts its start number and scratches in the race)
       - name: extra_distance
         description: How much extra distance (for volt)
       - name: shoes
@@ -72,24 +74,7 @@ models:
               type: average
             sum_bet_winnings:
               type: sum
-      - name: winnings
-        description: How much won by betting on the horse to win
-        meta:
-          metrics:
-            avg_winnings:
-              type: average
-      - name: winner_odds
-        description: Odds of the horse if it won, null otherwise
-        meta:
-          metrics:
-            avg_winner_odds:
-              type: average
-      - name: first_place
-        description: 1 if the horse won the race
-        meta:
-          metrics:
-            avg_first_place:
-              type: average
+
       - name: second_place
         description: 1 if the horse finished second in the race
       - name: third_place
@@ -124,3 +109,57 @@ models:
         description: Was the horse distanced?
       - name: disqualified
         description: Was the horse disqualified?
+      - name: winnings
+        description: How much won by betting on the horse to win
+        meta:
+          metrics:
+            avg_winnings:
+              type: average
+      - name: winner_odds
+        description: Odds of the horse if it won, null otherwise
+        meta:
+          metrics:
+            avg_winner_odds:
+              type: average
+      - name: first_place
+        description: 1 if the horse won the race
+        meta:
+          metrics:
+            avg_first_place:
+              type: average
+      - name: winning_distance
+        description: The distance the horse won with
+      - name: last_500m_time
+        description: The time of the last 500m of the race (when the horse won?)
+        meta:
+          metrics:
+            fastest_sprint:
+              type: min
+      - name: lead_after_500m
+        description: 1 if horse lead after 500m, 0 if horse did not lead and null if it is unknown who leaded
+      - name: lead_after_500m_time
+        description: Time for first 500m when horse also lead after 500m
+        meta:
+          metrics:
+            fastest_first_500m:
+              type: min
+            average_first_500m:
+              type: avg
+            slowest_first_500m:
+              type: max
+      - name: lead_after_1000m
+        description: 1 if horse lead after 1000m, 0 if horse did not lead and null if it is unknown who leaded
+      - name: lead_after_1000m_time
+        description: Time for first 500m when horse also lead after 1000m
+        meta:
+          metrics:
+            fastest_first_1000m:
+              type: min
+            average_first_1000m:
+              type: avg
+            slowest_first_1000m:
+              type: max
+      - name: lead_from_500m_and_win
+        description: 1 if horse lead after 500m and win
+      - name: lead_from_1000m_and_win
+        description: 1 if horse lead after 1000m and win
